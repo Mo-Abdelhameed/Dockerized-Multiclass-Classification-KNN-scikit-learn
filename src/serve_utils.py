@@ -33,10 +33,7 @@ class ModelResources:
 def get_model_resources(
     saved_schema_dir_path: str = paths.SAVED_SCHEMA_DIR_PATH,
     model_config_file_path: str = paths.MODEL_CONFIG_FILE_PATH,
-    preprocessing_dir_path: str = paths.PREPROCESSING_DIR_PATH,
     predictor_dir_path: str = paths.PREDICTOR_DIR_PATH,
-    explainer_dir_path: str = paths.EXPLAINER_DIR_PATH,
-    **kwargs,
 ) -> ModelResources:
     """
     Returns an instance of ModelResources.
@@ -44,10 +41,7 @@ def get_model_resources(
     Args:
         saved_schema_dir_path (str): Dir path to the saved data schema.
         model_config_file_path (str): Path to the model configuration file.
-        preprocessing_dir_path (str): he dir path where to save the pipeline
-            and target encoder.
         predictor_dir_path (str): Path to the saved predictor model file.
-        explainer_dir_path (str): Dir path where explainer is saved.
     Returns:
         Loaded ModelResources object
     """
@@ -85,7 +79,7 @@ def transform_req_data_and_make_predictions(
     5. Converts the predictions dataframe into a dictionary with required structure
 
     Args:
-        request (InferenceRequestBodyModel): The request body containing the input data.
+        data (pd.DataFrame): The data in the request body.
         model_resources (ModelResources): Resources needed by inference service.
         request_id (str): Unique request id for logging and tracking
 
@@ -97,9 +91,7 @@ def transform_req_data_and_make_predictions(
 
     # validate the data
     logger.info("Validating data...")
-    validated_data = validate_data(
-        data=data, data_schema=model_resources.data_schema, is_train=False
-    )
+    validate_data(data=data, data_schema=model_resources.data_schema, is_train=False)
 
     ids = data[model_resources.data_schema.id]
     data = data[model_resources.data_schema.features]
@@ -136,7 +128,7 @@ def create_predictions_response(
     Convert the predictions DataFrame to a response dictionary in required format.
 
     Args:
-        transformed_data (pd.DataFrame): The transfomed input data for prediction.
+        predictions_df (pd.DataFrame): The transformed input data for prediction.
         data_schema (Any): An instance of the MulticlassClassificationSchema.
         request_id (str): Unique request id for logging and tracking
 
