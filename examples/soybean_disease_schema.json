@@ -1,0 +1,417 @@
+{
+  "title": "Soybean (Large)",
+  "summary": "Michalski's famous soybean disease database.",
+  "modelCategory": "multiclass_classification",
+  "schemaVersion": 1.0,
+  "inputDataFormat": "CSV",
+  "id": {
+    "name": "id",
+    "description": "Unique identifier for each sample in the dataset."
+  },
+  "target": {
+    "name": "disease",
+    "description": "Target class of disease",
+    "classes": [
+      " 2-4-d-injury",
+      " alternarialeaf-spot",
+      " anthracnose",
+      " bacterial-blight",
+      " bacterial-pustule",
+      " brown-spot",
+      " brown-stem-rot",
+      " charcoal-rot",
+      " cyst-nematode",
+      " diaporthe-pod-&-stem-blight",
+      " diaporthe-stem-canker",
+      " downy-mildew",
+      " frog-eye-leaf-spot",
+      " herbicide-injury",
+      " phyllosticta-leaf-spot",
+      " phytophthora-rot",
+      " powdery-mildew",
+      " purple-seed-stain",
+      " rhizoctonia-root-rot"
+    ]
+  },
+  "features": [
+    {
+      "name": "date",
+      "description": "date: april,may,june,july,august,september,october",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        "april",
+        "august",
+        "july",
+        "june",
+        "may",
+        "october",
+        "september"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "plant-stand",
+      "description": "plant-stand: normal,lt-normal",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " lt-normal",
+        " normal"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "precip",
+      "description": "precip: lt-norm,norm,gt-norm",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " gt-norm",
+        " lt-norm",
+        " norm"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "temp",
+      "description": "temp: lt-norm,norm,gt-norm",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " gt-norm",
+        " lt-norm",
+        " norm"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "hail",
+      "description": "hail: yes,no",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " no",
+        " yes"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "crop-hist",
+      "description": "crop-hist: diff-lst-year,same-lst-yr,same-lst-two-yrs, same-lst-sev-yrs",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " diff-lst-year",
+        " same-lst-sev-yrs",
+        " same-lst-two-yrs",
+        " same-lst-yr"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "area-damaged",
+      "description": "area-damaged: scattered,low-areas,upper-areas,whole-field",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " low-areas",
+        " scattered",
+        " upper-areas",
+        " whole-field"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "severity",
+      "description": "severity: minor,pot-severe,severe",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " minor",
+        " pot-severe",
+        " severe"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "seed-tmt",
+      "description": "seed-tmt: none,fungicide,other",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " fungicide",
+        " none",
+        " other"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "germination",
+      "description": "germination: 90-100%,80-89%,lt-80%",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " 80-89",
+        " 90-100",
+        " lt-80"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "plant-growth",
+      "description": "plant-growth: norm,abnorm",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " abnorm",
+        " norm"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "leaves",
+      "description": "leaves: norm,abnorm.",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " abnorm",
+        " norm"
+      ],
+      "nullable": false
+    },
+    {
+      "name": "leafspots-halo",
+      "description": "leafspots-halo: absent,yellow-halos,no-yellow-halos",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " no-yellow-halos",
+        " yellow-halos"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "leafspots-marg",
+      "description": "leafspots-marg: w-s-marg,no-w-s-marg,dna",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " dna",
+        " no-w-s-marg",
+        " w-s-marg"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "leafspot-size",
+      "description": "leafspot-size: lt-1/8,gt-1/8,dna",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " dna",
+        " gt-1/8",
+        " lt-1/8"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "leaf-shred",
+      "description": "leaf-shread: absent,present",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " present"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "leaf-malf",
+      "description": "leaf-malf: absent,present",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " present"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "leaf-mild",
+      "description": "leaf-mild: absent,upper-surf,lower-surf",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " lower-surf",
+        " upper-surf"
+      ],
+      "nullable": true
+    },
+    {
+      "name": " stem",
+      "description": "stem: norm,abnorm",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " abnorm",
+        " norm"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "lodging",
+      "description": "lodging: yes,no",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " no",
+        " yes"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "stem-cankers",
+      "description": "stem-cankers: absent,below-soil,above-soil,above-sec-nde",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " above-sec-nde",
+        " above-soil",
+        " absent",
+        " below-soil"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "canker-lesion",
+      "description": "canker-lesion: dna,brown,dk-brown-blk,tan",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " brown",
+        " dk-brown-blk",
+        " dna",
+        " tan"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "fruiting-bodies",
+      "description": "fruiting-bodies: absent,present",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " present"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "external decay",
+      "description": "external decay: absent,firm-and-dry,watery",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " firm-and-dry",
+        " watery"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "mycelium",
+      "description": "mycelium: absent,present",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " present"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "int-discolor",
+      "description": "int-discolor: none,brown,black",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " black",
+        " brown",
+        " none"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "sclerotia",
+      "description": "sclerotia: absent,present",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " present"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "fruit-pods",
+      "description": "fruit-pods: norm,diseased,few-present,dna",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " diseased",
+        " dna",
+        " few-present",
+        " norm"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "fruit-spots",
+      "description": "fruit spots: absent,colored,brown-w/blk-specks,distort,dna",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " brown-w/blk-specks",
+        " colored",
+        " dna"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "seed",
+      "description": "seed: norm,abnorm",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " abnorm",
+        " norm"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "mold-growth",
+      "description": "mold-growth: absent,present",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " present"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "seed-discolor",
+      "description": "seed-discolor: absent,present",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " present"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "seed-size",
+      "description": "seed-size: norm,lt-norm",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " lt-norm",
+        " norm"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "shriveling",
+      "description": "shriveling: absent,present",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " absent",
+        " present"
+      ],
+      "nullable": true
+    },
+    {
+      "name": "roots",
+      "description": "roots: norm,rotted,galls-cysts",
+      "dataType": "CATEGORICAL",
+      "categories": [
+        " galls-cysts",
+        " norm",
+        " rotted"
+      ],
+      "nullable": true
+    }
+  ]
+}
