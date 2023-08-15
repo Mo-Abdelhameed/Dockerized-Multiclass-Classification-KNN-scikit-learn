@@ -8,7 +8,9 @@ from scipy.stats import zscore
 from joblib import dump, load
 from config import paths
 from imblearn.over_sampling import SMOTE
+from logger import get_logger
 
+logger = get_logger(task_name='preprocessing')
 
 def impute_numeric(input_data: pd.DataFrame, column: str, value='median') -> pd.DataFrame:
     """
@@ -140,15 +142,18 @@ def encode(input_data: pd.DataFrame, schema: MulticlassClassificationSchema, enc
     cat_features = schema.categorical_features
     if not cat_features:
         return input_data
-    if encoder is not None:
-        encoder = load(paths.ENCODER_FILE)
-        input_data = encoder.transform(input_data)
-        return input_data
+    try:
+        if encoder is not None:
+            encoder = load(paths.ENCODER_FILE)
+            input_data = encoder.transform(input_data)
+            return input_data
 
-    encoder = OneHotEncoder(top_categories=3)
-    encoder.fit(input_data)
-    input_data = encoder.transform(input_data)
-    dump(encoder, paths.ENCODER_FILE)
+        encoder = OneHotEncoder(top_categories=3)
+        encoder.fit(input_data)
+        input_data = encoder.transform(input_data)
+        dump(encoder, paths.ENCODER_FILE)
+    except ValueError:
+        logger.info('No categorical variables in the data. No encoding performed!')
     return input_data
 
 
