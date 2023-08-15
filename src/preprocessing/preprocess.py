@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import os
 from typing import Any, Dict, Tuple
 from schema.data_schema import MulticlassClassificationSchema
 from sklearn.preprocessing import StandardScaler
@@ -143,7 +144,7 @@ def encode(input_data: pd.DataFrame, schema: MulticlassClassificationSchema, enc
     if not cat_features:
         return input_data
     try:
-        if encoder is not None:
+        if encoder is not None and os.path.exists(paths.ENCODER_FILE):
             encoder = load(paths.ENCODER_FILE)
             input_data = encoder.transform(input_data)
             return input_data
