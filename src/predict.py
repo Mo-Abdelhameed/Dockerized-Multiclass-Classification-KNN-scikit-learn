@@ -7,7 +7,6 @@ from logger import get_logger
 from Classifier import Classifier
 from preprocessing.pipeline import create_pipeline, run_testing_pipeline
 from schema.data_schema import load_saved_schema
-from joblib import load
 
 logger = get_logger(task_name="predict")
 
@@ -30,7 +29,7 @@ def create_predictions_dataframe(
 
     Args:
         predictions_arr (np.ndarray): Predicted probabilities from predictor model.
-        class_names List[str]: List of target classes (labels).
+        class_names (List[str]): List of target classes (labels).
         prediction_field_name (str): Field name to use for predicted class.
         ids: ids as a numpy array for each of the samples in  predictions.
         id_field_name (str): Name to use for the id field.

@@ -1,6 +1,4 @@
-import os
-from typing import List
-from schema.data_schema import MulticlassClassificationSchema
+from typing import List, Any
 from preprocessing.preprocess import *
 from config import paths
 
@@ -30,7 +28,8 @@ def create_pipeline(schema: MulticlassClassificationSchema) -> List[Any]:
     return pipeline
 
 
-def run_testing_pipeline(data: pd.DataFrame, data_schema: MulticlassClassificationSchema, pipeline: List) -> pd.DataFrame:
+def run_testing_pipeline(data: pd.DataFrame, data_schema: MulticlassClassificationSchema, pipeline: List)\
+        -> pd.DataFrame:
     """
     Transforms the data by passing it through every step of the given pipeline.
 

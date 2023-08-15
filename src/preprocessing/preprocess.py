@@ -1,17 +1,17 @@
 import numpy as np
 import pandas as pd
 import os
-from typing import Any, Dict, Tuple
+from typing import Dict, Tuple
 from schema.data_schema import MulticlassClassificationSchema
 from sklearn.preprocessing import StandardScaler
 from feature_engine.encoding import OneHotEncoder
-from scipy.stats import zscore
 from joblib import dump, load
 from config import paths
 from imblearn.over_sampling import SMOTE
 from logger import get_logger
 
 logger = get_logger(task_name='preprocessing')
+
 
 def impute_numeric(input_data: pd.DataFrame, column: str, value='median') -> pd.DataFrame:
     """
@@ -54,8 +54,8 @@ def indicate_missing_values(input_data: pd.DataFrame) -> pd.DataFrame:
 
 def impute_categorical(input_data: pd.DataFrame, column: str) -> pd.DataFrame:
     """
-    Imputes the missing categorical values in the given dataframe column. If the percentage of missing values in the column is greater than 0.1, imputation is done using the word "Missing". 
-    Otherwise, the mode is used.
+    Imputes the missing categorical values in the given dataframe column. If the percentage of missing values in the
+    column is greater than 0.1, imputation is done using the word "Missing". Otherwise, the mode is used.
 
     Args:
         input_data (pd.DataFrame): The dataframe to be processed.
@@ -200,15 +200,14 @@ def normalize(input_data: pd.DataFrame, schema: MulticlassClassificationSchema, 
 
 
 def handle_class_imbalance(
-    transformed_data: pd.DataFrame, transformed_labels: pd.Series
+        transformed_data: pd.DataFrame, transformed_labels: pd.Series
 ) -> Tuple[pd.DataFrame, pd.Series]:
     """
     Handle class imbalance using SMOTE.
 
     Args:
         transformed_data (pd.DataFrame): The transformed data.
-        transformed_labels (pd.Series): The transformed labels.
-        random_state (int): The random state seed for reproducibility. Defaults to 0.
+        transformed_labels (pd.Series): The transformed labels
 
     Returns:
         Tuple[pd.DataFrame, pd.Series]: A tuple containing the balanced data and
@@ -226,4 +225,3 @@ def handle_class_imbalance(
         transformed_data, transformed_labels
     )
     return balanced_data, balanced_labels
-

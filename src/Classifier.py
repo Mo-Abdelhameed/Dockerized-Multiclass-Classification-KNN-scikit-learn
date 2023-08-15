@@ -49,7 +49,10 @@ class Classifier:
 
     def build_model(self) -> KNeighborsClassifier:
         """Build a new KNN binary classifier."""
-        return KNeighborsClassifier(n_neighbors=self.n_neighbors, weights=self.weights, p=self.p, leaf_size=self.leaf_size)
+        return KNeighborsClassifier(n_neighbors=self.n_neighbors,
+                                    weights=self.weights,
+                                    p=self.p,
+                                    leaf_size=self.leaf_size)
 
     def fit(self, train_input: pd.DataFrame, train_target: pd.DataFrame):
         """Fit the  KNN binary classifier to the training data.
