@@ -1,7 +1,8 @@
 # Dockerized-Multiclass-Classification-KNN-scikit-learn
+
 ## Project Description
 
-This repository is a dockerized implementation of the re-usable multi-class classifier model. It is implemented in flexible way so that it can be used with any binary classification dataset with the use of CSV-formatted data, and a JSON-formatted data schema file. The main purpose of this repository is to provide a complete example of a machine learning model implementation that is ready for deployment.
+This repository is a dockerized implementation of the re-usable multi-class classifier model. It is implemented in flexible way so that it can be used with any multi-class classification dataset with the use of CSV-formatted data, and a JSON-formatted data schema file. The main purpose of this repository is to provide a complete example of a machine learning model implementation that is ready for deployment.
 The following are the requirements for using your data with this model:
 
 - The data must be in CSV format.
@@ -65,7 +66,7 @@ In this section we cover the following:
 ### To run locally (without Docker)
 
 - Create your virtual environment and install dependencies listed in `requirements.txt` which is inside the `requirements` directory.
-- Move the three example files (`titanic_schema.json`, `titanic_train.csv` and `titanic_test.csv`) in the `examples` directory into the `./model_inputs_outputs/inputs/schema`, `./model_inputs_outputs/inputs/data/training` and `./model_inputs_outputs/inputs/data/testing` folders, respectively (or alternatively, place your custom dataset files in the same locations).
+- Move the three example files (`smoke_test_mc_schema.json`, `smoke_test_mc_train.csv` and `smoke_test_mc_test.csv`) in the `examples` directory into the `./model_inputs_outputs/inputs/schema`, `./model_inputs_outputs/inputs/data/training` and `./model_inputs_outputs/inputs/data/testing` folders, respectively (or alternatively, place your custom dataset files in the same locations).
 - Run the script `src/train.py` to train the random forest classifier model. This will save the model artifacts, including the preprocessing pipeline and label encoder, in the path `./model_inputs_outputs/model/artifacts/`.
 - Run the script `src/predict.py` to run batch predictions using the trained model. This script will load the artifacts and create and save the predictions in a file called `predictions.csv` in the path `./model_inputs_outputs/outputs/predictions/`.
 - Run the script `src/serve.py` to start the inference service, which can be queried using the `/ping` and `/infer` endpoints. The service runs on port 8080.
@@ -133,6 +134,7 @@ The key `instances` contains a list of objects, each of which is a sample for wh
   ]
 }
 ```
+
 #### OpenAPI
 
 Since the service is implemented using FastAPI, we get automatic documentation of the APIs offered by the service. Visit the docs at `http://localhost:8080/docs`.
