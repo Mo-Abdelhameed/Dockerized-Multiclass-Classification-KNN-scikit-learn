@@ -14,7 +14,7 @@ def create_pipeline(schema: MulticlassClassificationSchema) -> List[Any]:
         Returns:
             A list of tuples containing the functions to be executed in the pipeline on a certain column
         """
-    pipeline = [(drop_constant_features, None),
+    pipeline = [
                 (drop_all_nan_features, None),
                 (drop_duplicate_features, None),
                 (drop_mostly_missing_columns, None),
