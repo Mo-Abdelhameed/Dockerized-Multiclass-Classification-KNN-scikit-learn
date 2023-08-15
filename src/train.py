@@ -8,6 +8,7 @@ from preprocessing.pipeline import create_pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 from utils import set_seeds
+from joblib import dump
 
 
 logger = get_logger(task_name="train")
@@ -56,6 +57,7 @@ def run_training(
                     x_train, y_train = stage(x_train, column, target=y_train)
                 else:
                     x_train = stage(x_train, column)
+        dump(x_train.columns, paths.TRAIN_COLUMNS_FILE)
         x_train, x_test, y_train, y_test = train_test_split(x_train, y_train, test_size=0.1)
         best_score = 0
         best_n = 1

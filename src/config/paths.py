@@ -69,3 +69,4 @@ PREPROCESSING_CONFIG_FILE_PATH = os.path.join(CONFIG_DIR, "preprocessing.json")
 DEFAULT_HYPERPARAMETERS_FILE_PATH = os.path.join(
     CONFIG_DIR, "default_hyperparameters.json"
 )
+TRAIN_COLUMNS_FILE = os.path.join(MODEL_ARTIFACTS_PATH, 'columns.joblib')

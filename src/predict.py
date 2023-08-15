@@ -7,6 +7,7 @@ from logger import get_logger
 from Classifier import Classifier
 from preprocessing.pipeline import create_pipeline, run_testing_pipeline
 from schema.data_schema import load_saved_schema
+from joblib import load
 
 logger = get_logger(task_name="predict")
 

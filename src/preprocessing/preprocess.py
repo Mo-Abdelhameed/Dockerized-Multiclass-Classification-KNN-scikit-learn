@@ -193,32 +193,6 @@ def normalize(input_data: pd.DataFrame, schema: MulticlassClassificationSchema, 
     return input_data
 
 
-def remove_outliers_zscore(input_data: pd.DataFrame, column: str, target: pd.Series = None) -> pd.DataFrame:
-    """
-    Removes rows that have been identified as outliers using the z-score method according to a given column.
-
-    Args:
-        input_data (pd.DataFrame): The dataframe to be processed.
-        column (str): The name of the column.
-        target (pd.Series): The targets series associated with the input dataframe.
-    """
-
-    if column not in input_data.columns:
-        return input_data, target
-    input_data[column] = input_data[column].astype(np.float64)
-    threshold = 3
-    z_scores = np.abs(zscore(input_data[column]))
-    condition = z_scores < threshold
-    after_removal = input_data[condition]
-    if (after_removal.shape[0] / input_data.shape[0]) < 0.1:
-        if target is not None:
-            return input_data[condition], target[condition]
-        else:
-            return input_data[condition], None
-    else:
-        return input_data, target
-
-
 def handle_class_imbalance(
     transformed_data: pd.DataFrame, transformed_labels: pd.Series
 ) -> Tuple[pd.DataFrame, pd.Series]:
